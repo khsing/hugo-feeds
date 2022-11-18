@@ -1,3 +1,3 @@
-module github.com/kaushalmodi/hugo-atom-feed
+module codeberg.org/yelosan/hugo-feeds
 
-go 1.16
+go 1.19
