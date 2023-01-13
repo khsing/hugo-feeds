@@ -1,3 +1,3 @@
-module codeberg.org/yelosan/hugo-feeds
+module github.com/khsing/hugo-feeds
 
 go 1.19

@@ -11,7 +11,7 @@
   # https://validator.w3.org/feed/docs/atom.html#whatIsAtom
   name = "Atom"
   mediaType = "application/atom+xml"
-  baseName = "feed" # generated file = <baseName>.<mediaType."application/atom+xml".suffixes[0]> = feed.xml
+  baseName = "atom" # generated file = <baseName>.<mediaType."application/atom+xml".suffixes[0]> = feed.xml
   isPlainText = false
   rel = "alternate"
   isHTML = false
