@@ -46,13 +46,14 @@
     <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     {{ with or (.Site.LanguageCode) (.Site.Language.Lang) }}<language>{{ . }}</language>{{ end }}
     {{ with .Site.Copyright }}<copyright>{{ . }}</copyright>{{ end }}
+
     {{ if $semwebpersons }}{{ range $i, $semwebperson := index $semwebpersons }}{{ $dataperson := index $datapersons $semwebperson.person }}
       {{- /* note: else if [[semweb.persons]] is set in config file, use it to display a list of persons with fallback to /data/persons/ if present */}}
       {{ with or ($semwebperson.email) ($dataperson.email) }}<managingEditor>{{ . }}{{ with or ($semwebperson.name) ($dataperson.name) }} ({{ . }}){{ end }}</managingEditor>{{ end }}
       {{ end }}
     {{ else if .Site.Params.author }}
       {{- /* note: else if default Hugo 'author' param is used in frontmatter or config, display generic */}}
-      {{ with or (.Site.Params.author.email) }}<managingEditor>{{ . }}{{ with .Site.Params.author.name }} ({{ . }}){{ end }}</managingEditor>{{ end }}
+      <managingEditor>{{ .Site.Params.author.email }} ({{ .Site.Params.author.name }})</managingEditor>
     {{ end }}
     {{ if $semwebpersons }}{{ range $i, $semwebperson := index $semwebpersons }}{{ $dataperson := index $datapersons $semwebperson.person }}
       {{- /* note: else if [[semweb.persons]] is set in config file, use it to display a list of persons with fallback to /data/persons/ if present */}}
@@ -60,7 +61,7 @@
       {{ end }}
     {{ else if .Site.Params.author }}
       {{- /* note: else if default Hugo 'author' param is used in frontmatter or config, display generic */}}
-      {{ with or (.Site.Params.author.email) }}<webMaster>{{ . }}{{ with .Site.Params.author.name }} ({{ . }}){{ end }}</webMaster>{{ end }}
+      <webMaster>{{ .Site.Params.author.email }} ({{ .Site.Params.author.name }})</webMaster>
     {{ end }}
     {{ with or .PublishDate .Date .Lastmod }}<pubDate>{{ .UTC.Format $rfc822 | safeHTML }}</pubDate>{{ end }}
     {{ with or .Lastmod .PublishDate .Date }}<lastBuildDate>{{ .UTC.Format $rfc822 | safeHTML }}</lastBuildDate>{{ end }}
@@ -115,7 +116,7 @@
         {{ end }}
       {{ else if .Site.Params.author }}
         {{- /* note: else if default Hugo 'author' param is used in frontmatter or config, display generic */}}
-        {{ with or (.Site.Params.author.email) }}<author>{{ . }}{{ with .Site.Params.author.name }} ({{ . }}){{ end }}</author>{{ end }}
+        <author>{{ .Site.Params.author.email }} ({{ .Site.Params.author.name }})</author>
       {{ end }}
       {{- with (.GetTerms "categories") }}{{ range . -}}
         <category domain="{{ .Permalink }}">{{ .LinkTitle }}</category>
